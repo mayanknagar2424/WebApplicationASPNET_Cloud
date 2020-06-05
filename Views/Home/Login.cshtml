@@ -1,0 +1,52 @@
+﻿
+@model WebApplicationASPNET_Cloud.Models.AccountModel
+
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<h1>Login</h1>
+
+@using (Html.BeginForm("SignUp", "Home", FormMethod.Post))
+{<fieldset>
+        <legend>Sign Up</legend>
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("User Name")
+                </td>
+                <td>
+                    @Html.TextBoxFor(account => account.UserName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Email")
+                </td>
+                <td>
+                    @Html.TextBoxFor(account => account.Email)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Password")
+                </td>
+                <td>
+                    @Html.PasswordFor(account => account.Password)
+                </td>
+            </tr>
+            @*<tr>
+                <td>
+                    @Html.Label("Confirm Password")
+                </td>
+                <td>
+                    @Html.Password("txtPassword")
+                </td>
+            </tr>*@
+            <tr>
+                <td>
+                    <input type="submit" name="btnSubmit" value="Login" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>}

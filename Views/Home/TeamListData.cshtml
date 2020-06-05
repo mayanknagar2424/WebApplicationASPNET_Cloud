@@ -1,0 +1,166 @@
+﻿@{
+    ViewBag.Title = "Team List & Data";
+
+    //grid.Bind(Model.Products, autoSortAndPage: true, rowCount: @Model.PageSize);
+}
+
+<style>
+    table, th, td {
+        border: 2px solid black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 20%;
+        color: black;
+    }
+
+    td {
+        height: 40px;
+    }
+
+    #highlight {
+        background-color: Highlight;
+    }
+
+  
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Team List & Data</h1>
+    <br />
+    @*<div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                       aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+        </div>*@
+    <form class="md-form">
+        <div class="file-field">
+            <div class="btn btn-primary btn-sm float-left">
+                <span> Import/Bulk Update</span>
+                <input type="file">
+                <input type='button' value='Upload'>
+            </div>
+            @*<div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload your file">
+            </div>*@
+        </div>
+    </form>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr id="highlight">
+                <th>PID Number</th>
+                <th>SOW Number</th>
+                <th>PeopleSoft ID</th>
+                <th>OID</th>
+                <th>Name</th>
+                <th>Supervisor Name</th>
+                <th>Sapient Title</th>
+                <th>Role</th>
+                <th>End Date</th>
+                <th>Employment Type</th>
+                <th>Project Name/POD</th>
+                <th>Technical Domain</th>
+                <th>Sapient Exp</th>
+                <th>RBS Exp</th>
+                <th>Current IT Exp</th>
+                @*<th>Total IT Exp at the time of joining RBS</th>*@
+                <th>Total IT Exp</th>
+                <th>Project Type</th>
+                <th>Project Name RBS</th>
+                <th>DOJ(Sapient)</th>
+                <th>DOJ(RBS)</th>
+                <th>Contact No.</th>
+                <th>DOB</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model.TeamListData)
+            {
+            <tr>
+                <th scope="row">@item.PIDNumber</th>
+                <td>@item.SOWNumber</td>
+                <td>@item.PeopleSoftID</td>
+                <td>@item.OID</td>
+                <td>@item.Name</td>
+                <td>@item.SupervisorName</td>
+                <td>@item.SapientTitle</td>
+                <td>@item.Role</td>
+                <td>@item.EndDate</td>
+                <td>@item.EmploymentType</td>
+                <td>@item.ProjectName</td>
+                <td>@item.TechnicalDomain</td>
+                <td>@item.SapientExp</td>
+                <td>@item.RBSExp</td>
+                <td>@item.CurrentITExp</td>
+                <td>@item.TotalITExpAtTheTimeOfRBSJoining</td>
+                <td>@item.ProjectType</td>
+                <td>@item.ProjectNameRBS</td>
+                <td>@item.DOJSapient</td>
+                <td>@item.DOJRBS</td>
+                <td>@item.ContactNumber</td>
+                <td>@item.DOB</td>
+
+                <td><a data-value="@item.PIDNumber" href="javascript:void(0)" class="btnEdit">Edit</a></td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <ul class="pagination pull-right">
+                        @for (int pagenum = 1; pagenum <= @Model.PagerCount; pagenum++)
+                        {
+                            <li class="paginate_button"><a href="@Url.Action("index", "home", new { pageNumber = @pagenum })" aria-controls="example" data-dt-idx="2" tabindex="0">@pagenum</a></li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+
+    <div class="clearfix"></div>
+
+    <div id="dialog" title="edit view" style="overflow: hidden;"></div>
+
+    @section Scripts{
+        <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js"></script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                var id = 0;
+                $(document).on('click', '.btnEdit', function () {
+                    id = $(this).attr("data-value");
+                    $('#dialog').dialog('open');
+                });
+
+                $('#dialog').dialog({
+                    autoOpen: false,
+                    width: 400,
+                    resizable: false,
+                    title: 'Edit Product details',
+                    modal: true,
+                    open: function (event, ui) {
+                        // Load partial view _GridEditPartial
+                        $(this).load("@Url.Action("GetProductById")", { id: id });
+                    },
+                    buttons: {
+                        "Close": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            });
+        </script>
+    }
+
+</div>
+

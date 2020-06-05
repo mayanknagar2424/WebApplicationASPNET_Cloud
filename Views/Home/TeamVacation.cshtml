@@ -1,0 +1,285 @@
+﻿@{
+    ViewBag.Title = "Team Vacation";
+
+    //grid.Bind(Model.Products, autoSortAndPage: true, rowCount: @Model.PageSize);
+}
+
+<style>
+    table, th, td {
+        border: 2px solid black;
+    }
+
+    table {
+        table-layout: auto;
+        border-collapse: collapse;
+        width: 20%;
+        color: black;
+    }
+
+    td {
+        height: auto;
+        width:auto;
+    }
+
+    #highlight {
+        background-color: Highlight;
+        width:auto;
+        height:auto;
+    }
+
+    #green {
+        background-color:darkseagreen;
+        width:auto;
+        height:auto;
+    }
+
+    #yellow {
+        background-color: yellow;
+        width:auto;
+        height:auto;
+    }
+
+    #brown {
+        background-color: sandybrown;
+        width:auto;
+        height:auto;
+    }
+    #darkbrown {
+        background-color: brown;
+        width:auto;
+        height:auto;
+    }
+    #orange {
+        background-color: orange;
+        width:auto;
+        height:auto;
+    }
+
+    #lightblue {
+        background-color: lightblue;
+        width:auto;
+        height:auto;
+    }
+
+    #grey {
+        background-color: lightgrey;
+        width:auto;
+        height:auto;
+    }
+    #wh{
+        width:20px;
+        height:20px;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Team Vacation</h1>
+    <br />
+
+    
+    <table id="vacationHeader" class="table table-bordered" style="table-layout: fixed; width: 25% " align="left">
+        <thead>          
+            <tr id="wh">
+                <th>Vacation</th>
+                <th id="green">V</th>
+            </tr>
+            <tr id="wh">
+                <th>Public Holiday</th>
+                <th id="yellow">P</th>
+            </tr>
+            <tr id="wh">
+                <th>Release Week</th>
+                <th id="orange">T</th>
+            </tr>
+            <tr id="wh">
+                <th>Other time off</th>
+                <th id="lightblue">O</th>
+            </tr>
+        </thead>
+        </table>
+
+            <table id="vacation" class="table table-bordered" onload="javascript:hideTable()">
+                <thead>
+                    <tr id="green">
+                        <th colspan="2"></th>
+                        <th colspan="2"> </th>
+                        <th style="text-align: left " colspan="31">
+                            Select Month: <input type="month" id="start" name="start" min="2000-01" value="2020-05">
+                            <input type='button' onClick='javascript:showTable();' value='Show'>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th id="brown"></th>
+                        <th id="brown"></th>
+                        <th colspan="2" id="brown">May 2020 </th>
+                        <th colspan="2" id="brown">2020</th>
+                        @{
+
+                            int m = 5;
+                            int y = 2020;
+
+                            //Fetch the amount of days in your given month.
+                            int d = DateTime.DaysInMonth(y, m);
+
+                            //Here we create an enumerable from 1 to daysInMonth,
+                            //and ask whether the DateTime object we create belongs to a weekend day,
+                            //if it doesn't, add it to our IEnumerable<int> collection of days.
+                            var bd = Enumerable.Range(1, d)
+                                                .Select(day => new DateTime(y, m, day));
+
+                            //Pretty smooth.
+                            foreach (var day in bd)
+                            {
+                                if (@day.DayOfWeek.ToString().Substring(0, 1) == "S")
+                                {
+                                    <th id="darkbrown">@day.DayOfWeek.ToString().Substring(0, 1)</th>
+                                }
+                                else
+                                {
+                                    <th id="green">@day.DayOfWeek.ToString().Substring(0, 1)</th>
+                                }
+
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <th id="brown">Name</th>
+                        <th id="brown"></th>
+                        <th id="brown">Vacation</th>
+                        <th id="brown">Public Holiday</th>
+                        <th id="brown">Vacation</th>
+                        <th id="brown">Public Holiday</th>
+                        @{
+                            int month = 5;
+                            int year = 2020;
+
+                            //Fetch the amount of days in your given month.
+                            int daysInMonth = DateTime.DaysInMonth(year, month);
+
+                            //Here we create an enumerable from 1 to daysInMonth,
+                            //and ask whether the DateTime object we create belongs to a weekend day,
+                            //if it doesn't, add it to our IEnumerable<int> collection of days.
+                            IEnumerable<int> businessDaysInMonth = Enumerable.Range(1, daysInMonth);
+
+                            //Pretty smooth.
+                            foreach (var day in businessDaysInMonth)
+                            {
+                                <th id="green">@day</th>
+                            }
+                        }
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in @Model.VacationListData)
+                    {
+                    <tr>
+                        <th scope="row">@item.EmployeeName</th>
+                        <td>@item.TeamType</td>
+                        <td>@item.Vacation</td>
+                        <td>@item.PublicHolidays</td>
+                        <td>@item.YearlyVacation</td>
+                        <td>@item.YearlyPublicHolidays</td>
+                        @{
+
+                            //Fetch the amount of days in your given month.
+                            daysInMonth = DateTime.DaysInMonth(year, month);
+
+                            //Here we create an enumerable from 1 to daysInMonth,
+                            //and ask whether the DateTime object we create belongs to a weekend day,
+                            //if it doesn't, add it to our IEnumerable<int> collection of days.
+                            //businessDaysInMonth = Enumerable.Range(1, daysInMonth);
+                            var bdm = Enumerable.Range(1, d)
+                                                 .Select(day => new DateTime(y, m, day));
+
+                            //Pretty smooth.
+                            foreach (var day in bdm)
+                            {
+                                if (day.Day == 4 || day.Day == 12)
+                                {
+                                    <td id="green" style="width:auto">V</td>
+                                }
+                                else if (day.Day == 1)
+                                {
+                                    <td id="yellow" style="width:auto">P</td>
+                                }
+                                else if (day.DayOfWeek.ToString().Substring(0, 1) == "S")
+                                {
+
+                                    <td id="grey" style="width:auto"></td>
+
+                                }
+                                else
+                                {
+                                    <td style="width:10px"></td>
+                                }
+
+                            }
+                        }
+                        <td><a data-value="@item.EmployeeName" href="javascript:void(0)" class="btnEdit">Edit</a></td>
+                    </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <ul class="pagination pull-right">
+                                @for (int pagenum = 1; pagenum <= @Model.PagerCount; pagenum++)
+                                {
+                                    <li class="paginate_button"><a href="@Url.Action("index", "home", new { pageNumber = @pagenum })" aria-controls="example" data-dt-idx="2" tabindex="0">@pagenum</a></li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+            <div class="clearfix"></div>
+
+            <div id="dialog" title="edit view" style="overflow: hidden;"></div>
+
+            @section Scripts{
+                <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js"></script>
+                <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+                <script type="text/javascript">
+            $(function () {
+                var id = 0;
+                $(document).on('click', '.btnEdit', function () {
+                    id = $(this).attr("data-value");
+                    $('#dialog').dialog('open');
+                });
+
+                $('#dialog').dialog({
+                    autoOpen: false,
+                    width: 400,
+                    resizable: false,
+                    title: 'Edit Product details',
+                    modal: true,
+                    open: function (event, ui) {
+                        // Load partial view _GridEditPartial
+                        $(this).load("@Url.Action("GetProductById")", { id: id });
+                    },
+                    buttons: {
+                        "Close": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            });
+                </script>
+            }
+
+</div>
+
+<script>
+    function showTable() {
+        if (document.getElementById('vacation').style.visibility == "visible")
+            document.getElementById('vacation').style.visibility = "hidden";
+        else
+            document.getElementById('vacation').style.visibility = "visible";
+    }
+    function hideTable() {
+        document.getElementById('vacation').style.visibility = "hidden";
+    }
+</script>

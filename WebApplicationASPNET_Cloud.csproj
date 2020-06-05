@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>e5972810-204d-459a-a04c-94d8248b74be</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSAugment.Cognito.JwtBearer" Version="1.0.0" />
+    <PackageReference Include="AWSSDK.CloudFormation" Version="3.5.0-beta" />
+    <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.3.109.46" />
+    <PackageReference Include="AWSSDK.Core" Version="3.5.0-beta" />
+    <PackageReference Include="AWSSDK.Lambda" Version="3.5.0-beta" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.5.0-beta" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.0.7" />
+  </ItemGroup>
+
+
+
+</Project>

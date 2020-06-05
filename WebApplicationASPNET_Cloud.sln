@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationASPNET_Cloud", "WebApplicationASPNET_Cloud.csproj", "{259DEF2C-776C-4E99-915C-5D3BFFBA0CBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{259DEF2C-776C-4E99-915C-5D3BFFBA0CBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{259DEF2C-776C-4E99-915C-5D3BFFBA0CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{259DEF2C-776C-4E99-915C-5D3BFFBA0CBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{259DEF2C-776C-4E99-915C-5D3BFFBA0CBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6BB070B-B2F2-4DC2-835B-3F44E1DB69FB}
+	EndGlobalSection
+EndGlobal

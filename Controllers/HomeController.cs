@@ -26,7 +26,7 @@ namespace WebApplicationASPNET_Cloud.Controllers
 
         public IActionResult Login()
         {
-            AccountModel model = new AccountModel("mayanknagar111","Samikaran@2008","mayanknagar2008@gmail.com");
+            AccountModel model = new AccountModel("userid...","password...","....@gmail.com");
 
             return View(model);
         }
@@ -38,19 +38,19 @@ namespace WebApplicationASPNET_Cloud.Controllers
         {
             if (ModelState.IsValid)
             {
-                var cognito = new AmazonCognitoIdentityProviderClient("AKIAU5C2VK2IYYLLPB7V", "wVMjvv7ehNYtv8ueO2nUY8QibRMgzntl/ZHbHQdA", _region);
+                var cognito = new AmazonCognitoIdentityProviderClient("Access key ID", "Secret access key", _region);
                 /*User Sign up (new user creation)*/
                 //var request = new SignUpRequest
                 //{
                 //    ClientId = _clientId,
-                //    Password = "Samikaran@2008",
-                //    Username = "testuser123"
+                //    Password = "...",
+                //    Username = "...."
                 //};
 
                 //var emailAttribute = new AttributeType
                 //{
                 //    Name = "email",
-                //    Value = "mayanknagar2008@gmail.com"
+                //    Value = "....@gmail.com"
                 //};
                 //request.UserAttributes.Add(emailAttribute);
 
@@ -67,8 +67,8 @@ namespace WebApplicationASPNET_Cloud.Controllers
 
                 };
 
-                request.AuthParameters.Add("USERNAME", "mayanknagar1111");
-                request.AuthParameters.Add("PASSWORD", "Samikaran@2008");
+                request.AuthParameters.Add("USERNAME", "....");
+                request.AuthParameters.Add("PASSWORD", ".....");
 
                 var response = await cognito.AdminInitiateAuthAsync(request);
 

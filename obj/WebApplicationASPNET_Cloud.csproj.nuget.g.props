@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\maynagar\.nuget\packages\;C:\Microsoft\Xamarin\NuGet\</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.4.0</NuGetToolVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.visualstudio.azure.containers.tools.targets\1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('$(NuGetPackageRoot)microsoft.visualstudio.azure.containers.tools.targets\1.9.10\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\maynagar\.nuget\packages\microsoft.codeanalysis.analyzers\2.9.4</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets Condition=" '$(PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets)' == '' ">C:\Users\maynagar\.nuget\packages\microsoft.visualstudio.azure.containers.tools.targets\1.9.10</PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets>
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\maynagar\.nuget\packages\awssdk.core\3.5.0-beta</PkgAWSSDK_Core>
+    <PkgAWSSDK_SimpleNotificationService Condition=" '$(PkgAWSSDK_SimpleNotificationService)' == '' ">C:\Users\maynagar\.nuget\packages\awssdk.simplenotificationservice\3.5.0-beta</PkgAWSSDK_SimpleNotificationService>
+    <PkgAWSSDK_Lambda Condition=" '$(PkgAWSSDK_Lambda)' == '' ">C:\Users\maynagar\.nuget\packages\awssdk.lambda\3.5.0-beta</PkgAWSSDK_Lambda>
+    <PkgAWSSDK_CognitoIdentityProvider Condition=" '$(PkgAWSSDK_CognitoIdentityProvider)' == '' ">C:\Users\maynagar\.nuget\packages\awssdk.cognitoidentityprovider\3.3.109.46</PkgAWSSDK_CognitoIdentityProvider>
+    <PkgAWSSDK_CloudFormation Condition=" '$(PkgAWSSDK_CloudFormation)' == '' ">C:\Users\maynagar\.nuget\packages\awssdk.cloudformation\3.5.0-beta</PkgAWSSDK_CloudFormation>
+  </PropertyGroup>
+</Project>

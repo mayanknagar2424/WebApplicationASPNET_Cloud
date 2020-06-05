@@ -26,7 +26,7 @@ namespace WebApplicationASPNET_Cloud
             services.AddAuthentication("Bearer")
                 .AddJwtBearer(options =>
                 {
-                    options.Audience = "1jqdb6durpdka49pighshsmsem";
+                    options.Audience = "AppClientID......";
                     options.Authority = "https://samplewebapp.auth.ap-south-1.amazoncognito.com/ap-south-1_beZvEAZjS";
                 });
             //services.AddAuthentication("Bearer")
